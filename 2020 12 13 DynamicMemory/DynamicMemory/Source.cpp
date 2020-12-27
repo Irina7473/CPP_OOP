@@ -4,7 +4,7 @@
 #include "String.h"
 
 using namespace std;
-
+#define delimiter "\n-----------\n"
 
 int main()
 {
@@ -13,22 +13,32 @@ int main()
 #define check 1
 #ifdef check 1
 	String str0 = "Hello";
+	cout << delimiter << endl;
 	String str1 = str0;
+	cout << delimiter << endl;
 	String str2{ "world!" };
+	cout << delimiter << endl;
 	String str3 ( "Ura" );
+	cout << delimiter << endl;
 	String str4 = String("life and world!");
+	cout << delimiter << endl;
 	cout << str0 << endl << str1 << endl << str2 << endl << str3 << endl << str4 << endl;
-	//cout << delimiter << endl;
+	cout << delimiter << endl;
 	cout << str1+" "+str2 << endl << endl;  // "Hello world!"  
 	//здесь неявное преобразование типов, тк есть конструктор с 1 параметром
 	//здесь работает MoveConstructor
+	cout << delimiter << endl;
 
 	
 	str1 += str2;  // "Hello world!"
 	str1.print();
+	cout << delimiter << endl;
+
 	str3 = str3 + " " + str4;  // "Ura life and world!"
 	str3.print();
 	cout << endl;
+	cout << delimiter << endl;
+
 
 	String str5 = str1 + " " + str3;  // "Hello world! Ura life and world!"
 	str5 += "That's okay ;-)";

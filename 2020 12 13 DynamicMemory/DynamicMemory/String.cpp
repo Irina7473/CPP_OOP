@@ -1,31 +1,26 @@
 #pragma once
 #include "String.h"
 
-String:: String(int size) : Size{ size }
+String:: String(int size) : Size{ size }, Str ( new char[Size] {})
 {
-	Str = new char[Size] {};
 	cout << "DefaultConstructor:\t" << this << endl;
 }
-String::String(const char str[])
+String::String(const char str[]) : String ( strlen(str) + 1)  //делегирование конструктора
 {
-	Size = strlen(str) + 1;
-	Str = new char[Size] {};
 	for (int i = 0; i < strlen(str) + 1; i++)
-	{
 		Str[i] = str[i];
-	}
 	cout << "SignConstructor:\t" << this << endl;
 }
 
-String::String(const String& other)
+String::String(const String& other) : String(other.Str)
 {
-	if (this != &other)
+	/*if (this != &other)
 	{
 		Size = other.Size;
 		Str = new char[Size] {};
 		for (int i = 0; i < Size; i++)
 			Str[i] = other.Str[i];
-	}
+	}*/
 	cout << "CopyConstructor:\t" << this << endl;
 }
 
