@@ -1,6 +1,8 @@
 #pragma once
 #include "String.h"
 
+// определение класса
+
 String:: String(int size) : Size{ size }, Str ( new char[Size] {})
 {
 	cout << "DefaultConstructor:\t" << this << endl;
@@ -106,7 +108,6 @@ ostream& operator<<(ostream& os, const String& str)
 istream& operator>>(istream& is, String& str)
 {
 	return is >> str.getstr();
-
 }
 
 String operator+(const String& left, const String& right)

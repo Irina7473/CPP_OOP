@@ -10,7 +10,7 @@ int main()
 {
 	setlocale(LC_ALL,"");
 
-#define check 1
+//#define check 1
 #ifdef check 1
 	String str0 = "Hello";
 	cout << delimiter << endl;
@@ -52,7 +52,7 @@ int main()
 	*/
 
 #endif check 1
-/*
+
 //#define check 2
 #ifdef check 2
 	String str7, str8, str9;
@@ -64,7 +64,7 @@ int main()
 	cout << str7 << endl;
 #endif check 2
 
-//#define check 3
+#define check 3
 #ifdef check 3
 	String name;
 	cout << "Введите Ваше имя : ";
@@ -72,7 +72,7 @@ int main()
 	cout << name<<endl;
 
 #endif check 3
-	*/
+	
 
 	return 0;
 }

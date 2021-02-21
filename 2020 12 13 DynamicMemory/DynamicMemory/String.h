@@ -5,7 +5,7 @@ using namespace std;
 
 #define MOVE
 
-class String
+class String  //объ€вление класса
 {
 	int Size;   //размер строки
 	char* Str;  //указатель на строку в дин пам€ти
@@ -38,6 +38,7 @@ public:
 
 };
 
+//
 ostream& operator<<(ostream& os, const String& str);
 istream& operator>>(istream& is, String& str);
 
