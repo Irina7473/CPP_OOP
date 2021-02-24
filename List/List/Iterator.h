@@ -1,5 +1,30 @@
 #pragma once
+#include "Element.h"
+
 class Iterator
 {
+	Element* Temp;
+public:
+	Iterator(Element* temp) : Temp(temp) { /*cout << "IConstructor:\t" << this << endl;*/ };
+	~Iterator() { /*cout << "IDestructor:\t" << this << endl;*/ };
+
+	const int& operator*()const {return Temp->Data;}
+	int& operator*() {return Temp->Data;}
+	Iterator& operator++() 
+	{
+		Temp = Temp->pNext;
+		return *this; 
+	}
+	Iterator& operator++(int)
+	{
+		Iterator old = *this;
+		Temp = Temp->pNext;
+		return old;
+	}
+	bool operator==(const Iterator& other)const
+	{return this->Temp == other.Temp;}
+	bool operator!=(const Iterator& other)const
+	{return !(this->Temp == other.Temp);}
+
 };
 
