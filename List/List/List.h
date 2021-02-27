@@ -9,9 +9,14 @@ class List
 	Element* Tail;
 	int Size;
 public:
-	
+	const Iterator begin()const { return Head; }
+	Iterator begin() { return Head; }
+	const Iterator end()const { return Tail; }
+	Iterator end() { return Tail; }
+
 	List();
-	List(int size);
+	explicit List(int size);
+	List(const initializer_list<int> list);
 	~List();
 
 	Element* getHead()const { return Head; };
@@ -21,6 +26,9 @@ public:
 	void push_front(int data);
 	void push_back(int data);
 	void insert(int ind, int data);
+	void pop_front();	
+	void pop_back();	
+	void erase(int ind);
 
 	int& operator[](const int ind);
 

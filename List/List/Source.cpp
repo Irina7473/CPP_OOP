@@ -31,7 +31,7 @@ int main()
 
 #endif chek
 
-#define chek1
+//#define chek1
 #ifdef chek1
 	List list1(n);
 	for (int i = 0; i < n; i++)
@@ -43,15 +43,30 @@ int main()
 
 	int index;
 	int data;
-	cout << "Введите индекс добавляемого элемента  "; cin >> index;
+	cout << "Введите индекс добавляемого элемента > 0  "; cin >> index;
 	cout << "Введите значение добавляемого элемента  "; cin >> data;
 	list1.insert(index, data);
 	list1.print();
 	cout << TAB << endl;
 
-
 #endif chek1
 
+#define chek2
+#ifdef chek2
+	List list2 = {25,46,78,24,58,92};
+	list2.print();
+	cout << TAB << endl;
+	list2.pop_front();
+	list2.print();
+	list2.pop_back();
+	list2.print();
+	int index;
+	cout << "Введите индекс удаляемого элемента > 0  "; cin >> index;
+	list2.erase(index);
+	list2.print();
+	cout << TAB << endl;
+
+#endif chek2
 
 
 	return 0;

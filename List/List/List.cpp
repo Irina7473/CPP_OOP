@@ -6,8 +6,15 @@ List::List(): Head(nullptr), Tail(nullptr), Size(0)
 List::List(int size): List()
 {
 	for (int i = 0; i < size; i++)
-		push_front(0);
+		push_back(0);
 	cout << "LConstructor:\t" << this << endl;
+}
+
+List::List(const initializer_list<int> list): List()
+{
+	for (int const* it = list.begin(); it != list.end(); it++)
+		push_back(*it);
+	cout << "LinitConstructor:\t" << this << endl;
 }
 
 List::~List()
@@ -27,7 +34,6 @@ Element* List::getElement(int ind) const
 		for (int i = 0; i < (Size-ind); i++)
 			Temp = Temp->pPrev;
 	}
-	cout << Temp->Data << endl;
 	return Temp;
 }
 
@@ -52,7 +58,8 @@ void List::push_back(int data)
 void List::insert(int ind, int data)
 {
 	if (ind == 1) push_front(data);
-	else
+	else if (ind == Size + 1) push_back(data);
+	   else
 	{
 		Element* Temp = this->getElement(ind);
 		Temp->pPrev = Temp->pPrev->pNext = new Element(data, Temp->pPrev, Temp);
@@ -60,9 +67,47 @@ void List::insert(int ind, int data)
 	}
 }
 
+void List::pop_front()
+{
+	if (Head != nullptr)
+	{
+		Element* Temp = Head;
+		Head->pNext->pPrev = nullptr;
+		Head = Head->pNext;
+		delete Temp;
+		Size--;
+	}
+}
+
+void List::pop_back()
+{
+	if (Tail != nullptr)
+	{
+		Element* Temp = Tail;
+		Tail->pPrev->pNext = nullptr;
+		Tail = Tail->pPrev;
+		delete Temp;
+		Size--;
+	}
+}
+
+void List::erase(int ind)
+{
+	if (ind == 1) pop_front();
+	else if (ind == Size) pop_back();
+	else
+	{
+		Element* Temp = this->getElement(ind);
+		Temp->pPrev->pNext = Temp->pNext;
+		Temp->pNext->pPrev = Temp->pPrev;
+		delete Temp;
+		Size--;
+	}
+}
+
 int& List::operator[](const int ind)
 {
-	if (ind > (Size + 1)) throw exception("Out of range");
+	if (ind > Size) throw exception("Out of range");
 	return this->getElement(ind)->Data;
 }
 
