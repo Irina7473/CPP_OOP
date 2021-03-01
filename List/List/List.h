@@ -18,6 +18,7 @@ public:
 	explicit List(int size);
 	List(const initializer_list<int> list);
 	List(const List& other);
+	List(List&& other);
 	~List();
 
 	Element* getHead()const { return Head; };
@@ -32,10 +33,13 @@ public:
 	void erase(int ind);
 
 	int& operator[](const int ind);
+	List& operator =(const List& other);
+	List& operator =( List&& other);
 
 	void print();
 	
 };
 
-ostream& operator <<(ostream& os, const List list);
+ostream& operator <<(ostream& os, const List& list);
 
+List operator +(const List& left, const List& right);

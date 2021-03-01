@@ -24,8 +24,17 @@ List::List(const List& other): List()
 	cout << "LcopyConstructor:\t" << this << endl;
 }
 
+List::List(List&& other):
+	Head(other.Head), Tail(other.Tail), Size(other.Size)
+{
+	other.Head = nullptr;
+	other.Tail = nullptr;
+	cout << "LmoveConstructor:\t" << this << endl;
+}
+
 List::~List()
 {
+	while (Head) pop_front();
 	cout << "LDestructor:\t" << this << endl;
 }
 
@@ -48,7 +57,7 @@ void List::push_front(int data)
 {
 	Element* Temp = Head;
 	Head=new Element(data, nullptr, Head);
-	if(Temp!=nullptr)Temp->pPrev = Head;
+	if(Temp)Temp->pPrev = Head;
 	else Tail = Head;
 	Size++;
 }
@@ -57,7 +66,7 @@ void List::push_back(int data)
 {
 	Element* Temp = Tail; 
 	Tail= new Element(data, Tail,nullptr);
-	if (Temp != nullptr)Temp->pNext = Tail;
+	if (Temp)Temp->pNext = Tail;
 	else Head = Tail;
 	Size++;
 }
@@ -76,11 +85,14 @@ void List::insert(int ind, int data)
 
 void List::pop_front()
 {
-	if (Head != nullptr)
+	if (Head)
 	{
 		Element* Temp = Head;
-		Head->pNext->pPrev = nullptr;
-		Head = Head->pNext;
+		if (Temp->pNext)
+		{
+			Head->pNext->pPrev = nullptr;
+			Head = Head->pNext;
+		}
 		delete Temp;
 		Size--;
 	}
@@ -88,11 +100,14 @@ void List::pop_front()
 
 void List::pop_back()
 {
-	if (Tail != nullptr)
+	if (Tail)
 	{
 		Element* Temp = Tail;
-		Tail->pPrev->pNext = nullptr;
-		Tail = Tail->pPrev;
+		if (Temp->pPrev )
+		{
+			Tail->pPrev->pNext = nullptr;
+			Tail = Tail->pPrev;
+		}
 		delete Temp;
 		Size--;
 	}
@@ -118,10 +133,33 @@ int& List::operator[](const int ind)
 	return this->getElement(ind)->Data;
 }
 
+List& List::operator=(const List& other)
+{
+	if (this != &other)
+	{
+		while (Head) pop_front();
+		for (Iterator it = other.Head; it != nullptr; it++)
+			push_back(*it);
+	}
+	cout << "CopyAssignment " << this << endl;
+	return *this;
+}
+
+List& List::operator=(List&& other)
+{
+	while (Head) pop_front();
+	Size = other.Size;
+	Head = other.Head;
+	Tail = other.Tail;
+	other.Head = nullptr;
+	other.Tail=nullptr;
+	cout << "MoveAssignment " << this << endl;
+	return *this;
+}
+
 void List::print()
 {
-	Element* Temp = Head;
-	for (int i = 0; i < Size; i++)
+	for (Element* Temp = Head; Temp!=nullptr; Temp->pNext)
 	{
 		cout<< Temp << tab << Temp->Data << tab << Temp->pPrev << tab << Temp->pNext << endl;
 		Temp = Temp->pNext;
@@ -130,10 +168,18 @@ void List::print()
 	
 }
 
-ostream& operator<<(ostream& os, const List list)
+ostream& operator<<(ostream& os, const List& list)
 {
 	for (Iterator it = list.getHead(); it != nullptr; it++)
 		os << *it << tab;
 	cout << "Размер списка " << list.getSize() << endl;
 	return os;
+}
+
+List operator+(const List& left, const List& right)
+{
+	List result(left);
+	for (Iterator it = right.getHead(); it != nullptr; it++)
+		result.push_back(*it);
+	return result;
 }

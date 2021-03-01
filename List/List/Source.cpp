@@ -8,10 +8,10 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "");
-	//int n;
-	//cout << "¬ведите размер списка" << endl;
-	//cin >> n;
-	//#define chek
+	int n;
+	cout << "¬ведите размер списка" << endl;
+	cin >> n;
+//#define chek
 #ifdef chek
 
 	List list;
@@ -75,8 +75,14 @@ int main()
 	List list4(list3);
 	list4.print();
 	cout << TAB << endl;
-	
+	List list5 = { 77,88,99 };
+	list5.print();
 	cout << TAB << endl;
+	List list6;
+	list6 = list5 + list3;
+	list6.print();
+	cout << TAB << endl;
+	cout << list3<<list4<<list5<<list6 << endl;
 
 #endif chek3
 
