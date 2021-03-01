@@ -17,12 +17,9 @@ public:
 	List();
 	explicit List(int size);
 	List(const initializer_list<int> list);
-	List(const List& other);
-	List(List&& other);
 	~List();
 
 	Element* getHead()const { return Head; };
-	Element* getTail()const { return Tail; };
 	int getSize()const { return Size; };
 	Element* getElement(int ind)const;
 
@@ -34,12 +31,10 @@ public:
 	void erase(int ind);
 
 	int& operator[](const int ind);
-	List& operator=(const List& other);
-	List& operator=(List&& other);
 
 	void print();
 	
 };
 
 ostream& operator <<(ostream& os, const List list);
-List operator +(const List& left, const List& right);
+

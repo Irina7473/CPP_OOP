@@ -17,23 +17,8 @@ List::List(const initializer_list<int> list): List()
 	cout << "LinitConstructor:\t" << this << endl;
 }
 
-List::List(const List& other):List()
-{
-	for (Iterator it = other.Head; it != nullptr; it++)
-		push_back(*it);
-	cout << "LcopyConstructor:\t" << this << endl;
-}
-List::List( List&& other) :Head(other.Head), Tail(other.Tail), Size(other.Size)
-{
-	other.Head=nullptr;
-	other.Tail = nullptr;
-	other.Size = 0;
-	cout << "LmoveConstructor:\t" << this << endl;
-}
-
 List::~List()
 {
-	while (Head) pop_front();
 	cout << "LDestructor:\t" << this << endl;
 }
 
@@ -87,7 +72,7 @@ void List::pop_front()
 	if (Head != nullptr)
 	{
 		Element* Temp = Head;
-		if(Head->pNext) Head->pNext->pPrev = nullptr;
+		Head->pNext->pPrev = nullptr;
 		Head = Head->pNext;
 		delete Temp;
 		Size--;
@@ -126,29 +111,10 @@ int& List::operator[](const int ind)
 	return this->getElement(ind)->Data;
 }
 
-List& List::operator=(const List& other)
-{
-	if (this != &other)
-		for (Iterator it = other.Head; it != nullptr; it++)
-			push_back(*it);
-	cout << "CopyAssignment " << this << endl;
-	return *this;
-}
-
-List& List::operator=(List&& other)
-{
-	Size = other.Size;
-	Head = other.Head;
-	Tail = other.Tail;
-	other.Head=nullptr;
-	other.Tail=nullptr;
-	cout << "MoveAssignment " << this << endl;
-	return *this;
-}
-
 void List::print()
 {
-	for (Element*Temp=Head; Temp!=nullptr; Temp->pNext)
+	Element* Temp = Head;
+	for (int i = 0; i < Size; i++)
 	{
 		cout<< Temp << tab << Temp->Data << tab << Temp->pPrev << tab << Temp->pNext << endl;
 		Temp = Temp->pNext;
@@ -163,12 +129,4 @@ ostream& operator<<(ostream& os, const List list)
 		os << *it << tab;
 	cout << "Размер списка " << list.getSize() << endl;
 	return os;
-}
-
-List operator +(const List& left, const List& right)
-{
-	List result(left);
-	for (Iterator it = right.getHead(); it != nullptr; it++)
-		result.push_back(*it);
-	return result;
 }

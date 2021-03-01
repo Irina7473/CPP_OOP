@@ -21,12 +21,6 @@ public:
 		Temp = Temp->pNext;
 		return old;
 	}
-	Iterator& operator--(int)
-	{
-		Iterator old = *this;
-		Temp = Temp->pPrev;
-		return old;
-	}
 	bool operator==(const Iterator& other)const
 	{return this->Temp == other.Temp;}
 	bool operator!=(const Iterator& other)const
