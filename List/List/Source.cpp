@@ -51,7 +51,7 @@ int main()
 
 #endif chek1
 
-#define chek2
+//#define chek2
 #ifdef chek2
 	List list2 = {25,46,78,24,58,92};
 	list2.print();
@@ -67,6 +67,26 @@ int main()
 	cout << TAB << endl;
 
 #endif chek2
+
+//#define chek3
+#ifdef chek3
+	List list3 = { 1,2,3};
+	list3.print();
+	List list4(list3);
+	list4.print();
+	cout << TAB << endl;
+	List list5 = { 44,55,66 };
+	list5.print();
+	List list6;
+	list6 = list5;
+	list6.print();
+	cout << TAB << endl;
+	list6 = list3+list5;
+	list6.print();
+	cout << TAB << endl;
+	cout << list3 << list4 << list5 << list6 << endl;
+
+#endif chek3
 
 
 	return 0;
