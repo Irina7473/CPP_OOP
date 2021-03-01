@@ -17,6 +17,7 @@ public:
 	List();
 	explicit List(int size);
 	List(const initializer_list<int> list);
+	List(const List& other);
 	~List();
 
 	Element* getHead()const { return Head; };

@@ -17,6 +17,10 @@ List::List(const initializer_list<int> list): List()
 	cout << "LinitConstructor:\t" << this << endl;
 }
 
+List::List(const List& other)
+{
+}
+
 List::~List()
 {
 	cout << "LDestructor:\t" << this << endl;
