@@ -17,8 +17,11 @@ List::List(const initializer_list<int> list): List()
 	cout << "LinitConstructor:\t" << this << endl;
 }
 
-List::List(const List& other)
+List::List(const List& other): List()
 {
+	for (Iterator it = other.Head; it != nullptr; it++)
+		push_back(*it);
+	cout << "LcopyConstructor:\t" << this << endl;
 }
 
 List::~List()
