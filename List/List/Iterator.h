@@ -5,8 +5,8 @@ class Iterator
 {
 	Element* Temp;
 public:
-	Iterator(Element* temp) : Temp(temp) { /*cout << "IConstructor:\t" << this << endl;*/ };
-	~Iterator() { /*cout << "IDestructor:\t" << this << endl;*/ };
+	Iterator(Element* temp) : Temp(temp) {};
+	~Iterator() {};
 
 	const int& operator*()const {return Temp->Data;}
 	int& operator*() {return Temp->Data;}

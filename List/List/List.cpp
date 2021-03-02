@@ -90,9 +90,10 @@ void List::pop_front()
 		Element* Temp = Head;
 		if (Temp->pNext)
 		{
-			Head->pNext->pPrev = nullptr;
 			Head = Head->pNext;
+			Head->pPrev = nullptr;
 		}
+		else Head = Tail = nullptr;
 		delete Temp;
 		Size--;
 	}
@@ -105,9 +106,10 @@ void List::pop_back()
 		Element* Temp = Tail;
 		if (Temp->pPrev )
 		{
-			Tail->pPrev->pNext = nullptr;
 			Tail = Tail->pPrev;
+			Tail->pNext = nullptr;
 		}
+		else Head = Tail=nullptr;
 		delete Temp;
 		Size--;
 	}
@@ -141,7 +143,7 @@ List& List::operator=(const List& other)
 		for (Iterator it = other.Head; it != nullptr; it++)
 			push_back(*it);
 	}
-	cout << "CopyAssignment " << this << endl;
+	cout << "LCopyAssignment " << this << endl;
 	return *this;
 }
 
@@ -153,7 +155,7 @@ List& List::operator=(List&& other)
 	Tail = other.Tail;
 	other.Head = nullptr;
 	other.Tail=nullptr;
-	cout << "MoveAssignment " << this << endl;
+	cout << "LMoveAssignment " << this << endl;
 	return *this;
 }
 

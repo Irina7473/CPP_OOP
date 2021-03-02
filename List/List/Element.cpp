@@ -24,6 +24,7 @@ Element& Element::operator=(const Element& other)
 		pPrev = other.pPrev;
 		pNext = other.pNext;
 	}
+	cout << "ECopyAssignment " << this << endl;
 	return *this;
 }
 
@@ -33,5 +34,6 @@ Element& Element::operator=(Element&& other)
 	pPrev = other.pPrev;
 	pNext = other.pNext;
 	other.pNext=nullptr;
+	cout << "EMoveAssignment " << this << endl;
 	return *this;
 }

@@ -8,9 +8,9 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "");
-	int n;
-	cout << "¬ведите размер списка" << endl;
-	cin >> n;
+	//int n;
+	//cout << "¬ведите размер списка" << endl;
+	//cin >> n;
 //#define chek
 #ifdef chek
 

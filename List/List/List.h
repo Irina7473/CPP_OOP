@@ -41,5 +41,4 @@ public:
 };
 
 ostream& operator <<(ostream& os, const List& list);
-
 List operator +(const List& left, const List& right);
