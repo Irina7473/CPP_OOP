@@ -33,13 +33,11 @@ int main()
 	
 #endif chek
 
-#define chek1
+//#define chek1
 #ifdef chek1
 	List list1(n);
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < list1.getSize(); i++)
 		list1[i] = rand() % 100;
-	}
 	list1.print();
 	cout << TAB << endl;
 
@@ -57,7 +55,15 @@ int main()
 #ifdef chek2
 	List list2 = {25,46,78,24,58,92};
 	list2.print();
+	for (Iterator it = list2.begin(); it != list2.end(); ++it)
+		*it = rand() % 100;
+	for (int i : list2)
+		cout << i << tab;
 	cout << TAB << endl;
+	for (Iterator it = list2.rbegin(); it != list2.rend(); it--)
+		cout << *it << tab;
+	cout << TAB << endl;
+	/*
 	list2.pop_front();
 	list2.print();
 	list2.pop_back();
@@ -66,7 +72,7 @@ int main()
 	cout << "Введите индекс удаляемого элемента > 0  "; cin >> index;
 	list2.erase(index);
 	list2.print();
-	cout << TAB << endl;
+	cout << TAB << endl;*/
 
 #endif chek2
 
@@ -88,6 +94,18 @@ int main()
 
 #endif chek3
 
+	#define chek4
+#ifdef chek4
+	// тест производительности
+	List list(n) ;
+	cout << "Список создан" << endl;
+	//for (int i = 0; i < n; i++)
+		//list[i] = rand();
+	for (Iterator it = list.begin(); it != list.end(); it++)
+		*it = rand();
+	cout << "Данные загружены" << endl;
+	cout << TAB << endl;
+#endif chek4
 
 	return 0;
 }

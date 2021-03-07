@@ -11,12 +11,12 @@ public:
 	const int& operator*()const {return Temp->Data;}
 	int& operator*() {return Temp->Data;}
 
-	Iterator& operator++() 
+	Iterator& operator++() //prefix increment
 	{
 		Temp = Temp->pNext;
 		return *this; 
 	}
-	Iterator& operator++(int)
+	Iterator operator++(int)//postfix increment
 	{
 		Iterator old = *this;
 		Temp = Temp->pNext;
@@ -28,7 +28,7 @@ public:
 		Temp = Temp->pPrev;
 		return *this;
 	}
-	Iterator& operator--(int)
+	Iterator operator--(int)
 	{
 		Iterator old = *this;
 		Temp = Temp->pPrev;
@@ -38,7 +38,7 @@ public:
 	bool operator==(const Iterator& other)const
 	{return this->Temp == other.Temp;}
 	bool operator!=(const Iterator& other)const
-	{return !(this->Temp == other.Temp);}
+	{return !(*this == other);}
 
 };
 

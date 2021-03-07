@@ -11,12 +11,14 @@ class List
 public:
 	const Iterator begin()const { return Head; }
 	Iterator begin() { return Head; }
-	const Iterator end()const { return Tail; }
-	Iterator end() { return Tail; }
+	const Iterator end()const { return nullptr; }
+	Iterator end() { return nullptr; }
+	Iterator rbegin() { return Tail; }
+	Iterator rend() { return nullptr; }
 
 	List();
 	explicit List(int size);
-	List(const initializer_list<int> list);
+	List(const initializer_list<int>& list);
 	List(const List& other);
 	List(List&& other);
 	~List();
@@ -38,7 +40,7 @@ public:
 
 	void print()const;
 	void print_reverse()const;
-	bool empty()const;
+	bool empty()const;// Проверка наличия элементов в списке
 };
 
 ostream& operator <<(ostream& os, const List& list);

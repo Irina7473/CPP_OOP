@@ -1,27 +1,29 @@
 #include "List.h"
 
 List::List(): Head(nullptr), Tail(nullptr), Size(0)
-{cout << "LdefaultConstructor:\t" << this << endl;}
+{//cout << "LdefaultConstructor:\t" << this << endl;
+}
 
 List::List(int size): List()
 {
+	//while (size--)push_back(0);
 	for (int i = 0; i < size; i++)
 		push_back(0);
-	cout << "LConstructor:\t" << this << endl;
+	//cout << "LConstructor:\t" << this << endl;
 }
 
-List::List(const initializer_list<int> list): List()
+List::List(const initializer_list<int> &list): List()
 {
 	for (int const* it = list.begin(); it != list.end(); it++)
 		push_back(*it);
-	cout << "LinitConstructor:\t" << this << endl;
+	//cout << "LinitConstructor:\t" << this << endl;
 }
 
 List::List(const List& other): List()
 {
 	for (Iterator it = other.Head; it != nullptr; it++)
 		push_back(*it);
-	cout << "LcopyConstructor:\t" << this << endl;
+	//cout << "LcopyConstructor:\t" << this << endl;
 }
 
 List::List(List&& other):
@@ -29,13 +31,13 @@ List::List(List&& other):
 {
 	other.Head = nullptr;
 	other.Tail = nullptr;
-	cout << "LmoveConstructor:\t" << this << endl;
+	//cout << "LmoveConstructor:\t" << this << endl;
 }
 
 List::~List()
 {
 	while (Tail) pop_back();
-	cout << "LDestructor:\t" << this << endl;
+	//cout << "LDestructor:\t" << this << endl;
 }
 
 Element* List::getElement(int ind) const
@@ -93,6 +95,10 @@ void List::pop_front()
 {
 	if (Head)
 	{
+		/*
+		
+		*/
+
 		Element* Temp = Head;
 		if (Temp->pNext)
 		{
@@ -137,7 +143,7 @@ void List::erase(int ind)
 
 int& List::operator[](const int ind)
 {
-	if (ind > Size) throw exception("Out of range");
+	if (ind<0 || ind > Size) throw exception("Out of range");
 	return this->getElement(ind)->Data;
 }
 
@@ -149,7 +155,7 @@ List& List::operator=(const List& other)
 		for (Iterator it = other.Head; it != nullptr; it++)
 			push_back(*it);
 	}
-	cout << "LCopyAssignment " << this << endl;
+	//cout << "LCopyAssignment " << this << endl;
 	return *this;
 }
 
@@ -161,7 +167,7 @@ List& List::operator=(List&& other)
 	Tail = other.Tail;
 	other.Head = nullptr;
 	other.Tail=nullptr;
-	cout << "LMoveAssignment " << this << endl;
+	//cout << "LMoveAssignment " << this << endl;
 	return *this;
 }
 
@@ -174,8 +180,10 @@ void List::print()const
 }
 void List::print_reverse()const
 {
+	/*
 	for (Element* Temp = Tail; Temp; Temp=Temp->pPrev)
-		cout << Temp << tab << Temp->Data << tab << Temp->pPrev << tab << Temp->pNext << endl;
+		cout << Temp << tab << Temp->Data << tab << Temp->pPrev << tab << Temp->pNext << endl;*/
+	
 	cout << "Размер списка " << Size << endl;
 
 
