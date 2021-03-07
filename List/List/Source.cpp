@@ -8,9 +8,9 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "");
-	//int n;
-	//cout << "¬ведите размер списка" << endl;
-	//cin >> n;
+	int n;
+	cout << "¬ведите размер списка" << endl;
+	cin >> n;
 //#define chek
 #ifdef chek
 
@@ -18,7 +18,9 @@ int main()
 	for (int i = 0; i < n; i++)
 	{list.push_back(rand() % 100);}
 	list.print();
+	list.print_reverse();
 	cout << TAB << endl;
+	
 	list.push_front(1);
 	cout << list << endl;
 	list.push_back(10);
@@ -28,10 +30,10 @@ int main()
 	list.getElement(4);
 	list.getElement(5);
 	cout << TAB << endl;
-
+	
 #endif chek
 
-//#define chek1
+#define chek1
 #ifdef chek1
 	List list1(n);
 	for (int i = 0; i < n; i++)
@@ -68,7 +70,7 @@ int main()
 
 #endif chek2
 
-#define chek3
+//#define chek3
 #ifdef chek3
 	List list3 = { 11,22,33};
 	list3.print();

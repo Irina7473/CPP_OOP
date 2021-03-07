@@ -34,16 +34,19 @@ List::List(List&& other):
 
 List::~List()
 {
-	while (Head) pop_front();
+	while (Tail) pop_back();
 	cout << "LDestructor:\t" << this << endl;
 }
 
 Element* List::getElement(int ind) const
 {
-	Element* Temp = Head;
+	Element* Temp;
 	if (ind <= Size / 2)
+	{
+		Temp = Head;
 		for (int i = 0; i < ind - 1; i++)
 			Temp = Temp->pNext;
+	}
 	else
 	{
 		Temp = Tail;
@@ -55,26 +58,29 @@ Element* List::getElement(int ind) const
 
 void List::push_front(int data)
 {
-	Element* Temp = Head;
-	Head=new Element(data, nullptr, Head);
-	if(Temp)Temp->pPrev = Head;
-	else Tail = Head;
+	if (empty())
+		Head = Tail = new Element(data, nullptr, nullptr);
+	else Head = Head->pPrev = new Element(data, nullptr, Head);
 	Size++;
 }
 
 void List::push_back(int data)
 {
-	Element* Temp = Tail; 
-	Tail= new Element(data, Tail,nullptr);
-	if (Temp)Temp->pNext = Tail;
-	else Head = Tail;
+	if(empty())
+		Head=Tail= new Element(data, nullptr, nullptr);
+	else Tail = Tail->pNext=new Element(data, Tail,nullptr);
 	Size++;
 }
 
 void List::insert(int ind, int data)
 {
-	if (ind == 1) push_front(data);
-	else if (ind == Size + 1) push_back(data);
+	if (ind<=0 || ind > Size+1) return;
+	if (empty() || ind == 1)
+	{
+		push_front(data);
+		return;
+	}
+	if (ind == Size + 1) push_back(data);
 	   else
 	{
 		Element* Temp = this->getElement(ind);
@@ -159,15 +165,25 @@ List& List::operator=(List&& other)
 	return *this;
 }
 
-void List::print()
+void List::print()const
 {
-	for (Element* Temp = Head; Temp!=nullptr; Temp->pNext)
-	{
+	for (Element* Temp = Head; Temp!=nullptr; Temp=Temp->pNext)
 		cout<< Temp << tab << Temp->Data << tab << Temp->pPrev << tab << Temp->pNext << endl;
-		Temp = Temp->pNext;
-	}
 	cout << "Размер списка " << Size << endl;
 	
+}
+void List::print_reverse()const
+{
+	for (Element* Temp = Tail; Temp; Temp=Temp->pPrev)
+		cout << Temp << tab << Temp->Data << tab << Temp->pPrev << tab << Temp->pNext << endl;
+	cout << "Размер списка " << Size << endl;
+
+
+}
+
+bool List::empty() const
+{
+	return Head==nullptr && Tail==nullptr;
 }
 
 ostream& operator<<(ostream& os, const List& list)

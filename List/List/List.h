@@ -36,8 +36,9 @@ public:
 	List& operator =(const List& other);
 	List& operator =( List&& other);
 
-	void print();
-	
+	void print()const;
+	void print_reverse()const;
+	bool empty()const;
 };
 
 ostream& operator <<(ostream& os, const List& list);
