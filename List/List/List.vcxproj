@@ -142,12 +142,14 @@
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="List.cpp" />
+    <ClCompile Include="ReverseIterator.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Element.h" />
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="ReverseIterator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

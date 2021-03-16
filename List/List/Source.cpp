@@ -1,6 +1,7 @@
 #include<iostream>
-#include "Element.h"
-#include "Iterator.h"
+//#include "Element.h"
+//#include "Iterator.h"
+//#include "ReverseIterator.h"
 #include "List.h"
 using namespace std;
 #define TAB "--------------------------------"
@@ -60,7 +61,8 @@ int main()
 	for (int i : list2)
 		cout << i << tab;
 	cout << TAB << endl;
-	for (Iterator it = list2.rbegin(); it != list2.rend(); it--)
+	list2.print_reverse();
+	for (ReverseIterator it = list2.rbegin(); it != list2.rend(); it++)
 		cout << *it << tab;
 	cout << TAB << endl;
 	/*
@@ -94,7 +96,7 @@ int main()
 
 #endif chek3
 
-	#define chek4
+	//#define chek4
 #ifdef chek4
 	// тест производительности
 	List list(n) ;

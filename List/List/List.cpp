@@ -95,10 +95,6 @@ void List::pop_front()
 {
 	if (Head)
 	{
-		/*
-		
-		*/
-
 		Element* Temp = Head;
 		if (Temp->pNext)
 		{
@@ -184,6 +180,8 @@ void List::print_reverse()const
 	for (Element* Temp = Tail; Temp; Temp=Temp->pPrev)
 		cout << Temp << tab << Temp->Data << tab << Temp->pPrev << tab << Temp->pNext << endl;*/
 	
+	for (ReverseIterator it = Tail; it != nullptr; it++)
+		cout << *it << tab;
 	cout << "Размер списка " << Size << endl;
 
 

@@ -1,6 +1,8 @@
 #pragma once
 #include "Element.h"
 #include "Iterator.h"
+#include "ReverseIterator.h"
+
 #define tab "\t"
 
 class List
@@ -13,9 +15,11 @@ public:
 	Iterator begin() { return Head; }
 	const Iterator end()const { return nullptr; }
 	Iterator end() { return nullptr; }
-	Iterator rbegin() { return Tail; }
-	Iterator rend() { return nullptr; }
-
+	const ReverseIterator rbegin()const { return Tail; }
+	ReverseIterator rbegin() { return Tail; }
+	const ReverseIterator rend()const { return nullptr; }
+	ReverseIterator rend() { return nullptr; }
+	
 	List();
 	explicit List(int size);
 	List(const initializer_list<int>& list);

@@ -20,6 +20,7 @@ public:
 	Element& operator=(Element&& other);
 
 	friend class Iterator;
+	friend class ReverseIterator;
 	friend class List;
 };
 
