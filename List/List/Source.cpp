@@ -3,6 +3,7 @@
 #include "Iterator.h"
 #include "ReverseIterator.h"
 #include "List.h"
+
 using namespace std;
 #define TAB "--------------------------------"
 
@@ -109,15 +110,21 @@ int main()
 	cout << TAB << endl;
 #endif chek4
 
-	//#define chek5
+	#define chek5
 #ifdef chek5
-	List<int>list1;
-	for (int i = 0; i < n; i++)
-		list1.push_back(rand() % 100);
+	List<double>list1(n);
+	for (Iterator<double> it = list1.begin(); it != list1.end(); ++it)
+		*it = rand() % 100;
 	list1.print();
 	cout << TAB << endl;
-	
-	
+	List<double>list2 = { 1.1,1.2,1.3 };
+	list2.print();
+	cout << TAB << endl;
+	List<double>list3 = list1+list2;
+	list3.print();
+	list3.print_reverse();
+	cout << TAB << endl;
+	//cout << list1 << list2 << list3 << endl;    ERROR!!
 
 #endif chek5
 

@@ -31,9 +31,9 @@ public:
 	int getSize()const { return Size; };
 	Element <T>* getElement(int ind)const;
 
-	void push_front(int data);
-	void push_back(int data);
-	void insert(int ind, int data);
+	void push_front(T data);
+	void push_back(T data);
+	void insert(int ind, T data);
 	void pop_front();	
 	void pop_back();	
 	void erase(int ind);
@@ -46,9 +46,9 @@ public:
 
 	void print()const;
 	void print_reverse()const;
-	friend ostream& operator<<(ostream& os, const List& list)
+	friend ostream& operator<<(ostream& os, const List<T>& list)
 	{
-		for (Iterator<T> it = begin(); it != end(); it++)
+		for (Iterator<T> it = list.begin(); it = list.end(); it++)
 			os << *it << tab;
 		cout << "Размер списка " << list.getSize() << endl;
 		return os;
@@ -56,3 +56,5 @@ public:
 };
 
 template <typename T> List <T> operator +(const List<T>& left, const List<T>& right);
+
+#include "List.inl"

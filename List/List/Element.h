@@ -24,3 +24,4 @@ public:
 	template <typename T> friend class List;
 };
 
+#include "Element.inl"

@@ -1,4 +1,3 @@
-#include "Element.h"
 
 template <typename T> Element <T>::Element(T data) :
 	Data(data), pPrev(nullptr), pNext(nullptr)

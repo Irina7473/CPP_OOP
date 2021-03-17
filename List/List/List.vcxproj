@@ -139,10 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Element.cpp" />
-    <ClCompile Include="Iterator.cpp" />
-    <ClCompile Include="List.cpp" />
-    <ClCompile Include="ReverseIterator.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +146,10 @@
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="ReverseIterator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Element.inl" />
+    <None Include="List.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
