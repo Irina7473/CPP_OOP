@@ -2,14 +2,18 @@
 https://github.com/okovtun/VBU_022_CPP
 
 TODO:
-В класс List, добавить методы:
-void erase(int index);	//Удаляет элемент по индексу
-CopyMethods();
-MoveMethods();
-operator+();
-Iterator;		DONE
-ReverseIterator;//Методы rbegin() и rend() должны возращать ReverseIterator
+
+
 Создать ветку templated и в ней шаблонизировать классы List и ForwardList.
+
+DONE:
+В класс List, добавить методы:
+void erase(int index);	//Удаляет элемент по индексу   
+CopyMethods();  
+MoveMethods(); 
+operator+();       
+Iterator;		
+ReverseIterator;//Методы rbegin() и rend() должны возращать ReverseIterator
 
 DONE:
 В класс List добавить методы:
