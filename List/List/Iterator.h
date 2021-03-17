@@ -1,15 +1,15 @@
 #pragma once
 #include "Element.h"
 
-class Iterator
+template <typename T> class Iterator
 {
-	Element* Temp;
+	Element<T>* Temp;
 public:
-	Iterator(Element* temp) : Temp(temp) {};
+	Iterator(Element<T>* temp) : Temp(temp) {};
 	~Iterator() {};
 
-	const int& operator*()const {return Temp->Data;}
-	int& operator*() {return Temp->Data;}
+	const T& operator*()const {return Temp->Data;}
+	T& operator*() {return Temp->Data;}
 
 	Iterator& operator++() //prefix increment
 	{

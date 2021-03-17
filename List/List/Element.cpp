@@ -1,16 +1,20 @@
 #include "Element.h"
 
-Element::Element(int data, Element* pPrev=nullptr, Element* pNext=nullptr):
+template <typename T> Element <T>::Element(T data) :
+	Data(data), pPrev(nullptr), pNext(nullptr)
+{//cout << "EConstructor:\t" << this << endl;
+}
+template <typename T> Element <T>::Element(T data, Element* pPrev, Element* pNext):
 	Data(data), pPrev(pPrev), pNext(pNext)
 {//cout << "EConstructor:\t" << this << endl;
 }
 
-Element::Element(const Element& other):
+template <typename T> Element <T>::Element(const Element& other):
 	Data(other.Data), pPrev(other.pPrev), pNext(other.pNext)
 {//cout << "ECopyConstructor:\t" << this << endl;
 }
 
-Element::Element(Element&& other):
+template <typename T> Element <T>::Element(Element&& other):
 	Data(other.Data), pPrev(other.pPrev), pNext(other.pNext)
 {
 	other.pPrev = nullptr;
@@ -18,7 +22,7 @@ Element::Element(Element&& other):
 	cout << "EMoviConstructor:\t" << this << endl;
 }
 
-Element& Element::operator=(const Element& other)
+template <typename T> Element<T>& Element<T>::operator=(const Element& other)
 {
 	if (this!=&other)
 	{
@@ -30,7 +34,7 @@ Element& Element::operator=(const Element& other)
 	return *this;
 }
 
-Element& Element::operator=(Element&& other)
+template <typename T> Element<T>& Element<T>::operator=(Element&& other)
 {
 	Data = other.Data;
 	pPrev = other.pPrev;

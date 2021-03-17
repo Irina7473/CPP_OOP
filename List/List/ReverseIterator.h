@@ -1,15 +1,15 @@
 #pragma once
 #include "Element.h"
 
-class ReverseIterator
+template <typename T> class ReverseIterator
 {
-	Element* Temp;
+	Element<T>* Temp;
 public:
-	ReverseIterator(Element* temp) : Temp(temp) {};
+	ReverseIterator(Element<T>* temp) : Temp(temp) {};
 	~ReverseIterator() {};
 
-	const int& operator*()const { return Temp->Data; }
-	int& operator*() { return Temp->Data; }
+	const T& operator*()const { return Temp->Data; }
+	T& operator*() { return Temp->Data; }
 
 	ReverseIterator& operator++() //prefix increment
 	{

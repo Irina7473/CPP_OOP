@@ -1,7 +1,7 @@
 #include<iostream>
-//#include "Element.h"
-//#include "Iterator.h"
-//#include "ReverseIterator.h"
+#include "Element.h"
+#include "Iterator.h"
+#include "ReverseIterator.h"
 #include "List.h"
 using namespace std;
 #define TAB "--------------------------------"
@@ -108,6 +108,18 @@ int main()
 	cout << "Данные загружены" << endl;
 	cout << TAB << endl;
 #endif chek4
+
+	//#define chek5
+#ifdef chek5
+	List<int>list1;
+	for (int i = 0; i < n; i++)
+		list1.push_back(rand() % 100);
+	list1.print();
+	cout << TAB << endl;
+	
+	
+
+#endif chek5
 
 	return 0;
 }

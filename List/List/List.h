@@ -5,31 +5,31 @@
 
 #define tab "\t"
 
-class List
+template <typename T> class List
 {
-	Element* Head;
-	Element* Tail;
+	Element <T>* Head;
+	Element <T>* Tail;
 	int Size;
 public:
-	const Iterator begin()const { return Head; }
-	Iterator begin() { return Head; }
-	const Iterator end()const { return nullptr; }
-	Iterator end() { return nullptr; }
-	const ReverseIterator rbegin()const { return Tail; }
-	ReverseIterator rbegin() { return Tail; }
-	const ReverseIterator rend()const { return nullptr; }
-	ReverseIterator rend() { return nullptr; }
+	const Iterator<T> begin()const { return Head; }
+	Iterator<T> begin() { return Head; }
+	const Iterator<T> end()const { return nullptr; }
+	Iterator<T> end() { return nullptr; }
+	const ReverseIterator<T> rbegin()const { return Tail; }
+	ReverseIterator<T> rbegin() { return Tail; }
+	const ReverseIterator<T> rend()const { return nullptr; }
+	ReverseIterator<T> rend() { return nullptr; }
 	
 	List();
 	explicit List(int size);
-	List(const initializer_list<int>& list);
+	List(const initializer_list<T>& list);
 	List(const List& other);
 	List(List&& other);
 	~List();
 
-	Element* getHead()const { return Head; };
+	Element <T>* getHead()const { return Head; };
 	int getSize()const { return Size; };
-	Element* getElement(int ind)const;
+	Element <T>* getElement(int ind)const;
 
 	void push_front(int data);
 	void push_back(int data);
@@ -38,14 +38,21 @@ public:
 	void pop_back();	
 	void erase(int ind);
 
-	int& operator[](const int ind);
+	T& operator[](const int ind);
 	List& operator =(const List& other);
 	List& operator =( List&& other);
 
+	bool empty()const;// Проверка наличия элементов в списке
+
 	void print()const;
 	void print_reverse()const;
-	bool empty()const;// Проверка наличия элементов в списке
+	friend ostream& operator<<(ostream& os, const List& list)
+	{
+		for (Iterator<T> it = begin(); it != end(); it++)
+			os << *it << tab;
+		cout << "Размер списка " << list.getSize() << endl;
+		return os;
+	}
 };
 
-ostream& operator <<(ostream& os, const List& list);
-List operator +(const List& left, const List& right);
+template <typename T> List <T> operator +(const List<T>& left, const List<T>& right);

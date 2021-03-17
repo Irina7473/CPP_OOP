@@ -1,16 +1,16 @@
 #pragma once
 #include<iostream>
 using namespace std;
-#define DEBUG
 
-class Element
+template <typename T> class Element
 {
-	int Data;
+	T Data;
 	Element* pPrev;
 	Element* pNext;
 
 public:
-	Element(int data, Element* pPrev, Element* pNext);
+	Element(T data);
+	Element(T data, Element* pPrev, Element* pNext);
 	Element(const Element& other);
 	Element(Element&& other);
 	~Element() { //cout << "EDestructor:\t" << this << endl; 
@@ -19,8 +19,8 @@ public:
 	Element& operator=(const Element& other);
 	Element& operator=(Element&& other);
 
-	friend class Iterator;
-	friend class ReverseIterator;
-	friend class List;
+	template <typename T> friend class Iterator;
+	template <typename T> friend class ReverseIterator;
+	template <typename T> friend class List;
 };
 
