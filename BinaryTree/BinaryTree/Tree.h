@@ -15,7 +15,7 @@ public:
 	Iterator end() { return nullptr; }
 
 	Tree() : Root(nullptr) { cout << "Construcktor Tree  " <<this<<endl; }
-	Tree(const initializer_Tree<int>& tree);
+	Tree(const initializer_list <int> & tree);
 	Tree(const Tree& other) : Tree()
 	{ 
 		copy(other.Root);

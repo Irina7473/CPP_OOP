@@ -20,6 +20,9 @@ int main()
 	TAB;
 	Tree t2=t;
 	t2.print();
+	TAB;
+	Tree t3 = {1,2,3,4,5};
+	t3.print();
 
 	return 0;
 }

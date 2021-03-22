@@ -1,10 +1,10 @@
 #include "Tree.h"
 
-Tree::Tree(const initializer_Tree<int>& tree): Tree()
+Tree::Tree(const initializer_list <int> & tree): Tree()
 {
 	for (int const* it = tree.begin(); it != tree.end(); it++)
 		insert (*it);
-	cout << "LinitConstructor Tree  " << this << endl;
+	cout << "LIConstructor Tree  " << this << endl;
 }
 
 Tree::Tree(Tree&& other) : Tree()
