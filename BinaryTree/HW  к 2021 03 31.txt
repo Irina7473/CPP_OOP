@@ -1,0 +1,10 @@
+﻿https://www.youtube.com/watch?v=keX4ivr9Ytc&list=PLeqyOOqxeiINBBW5KUmcf-M4_wfb4yqKp&index=1&t=205s
+https://github.com/okovtun/VBU_022_CPP
+
+TODO: к 31.03.2021
+В BinaryTree добавить:
++  CopyAssignment();
+ILconstructor;	//Tree t = {3, 5, ....};
+erase(int Data);//Удаляет заданное значение из дерева
+Шаблонизировать дерево.
+

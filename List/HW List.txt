@@ -1,3 +1,7 @@
+Шаблонизированный двусвязный список
+
+https://github.com/Irina7473/CPP_OOP/tree/Templated/List/List
+
 
 Двусвязный список
 
