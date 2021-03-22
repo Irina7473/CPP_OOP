@@ -13,7 +13,9 @@ public:
 
 	Iterator& operator ++()
 	{
-		(Temp)? Temp = Temp->pLeft : Temp = Temp->pRight;
+		//return (Temp->pRight) ? maxValue(Root->pRight) : Root->Data;
+
+		//(Temp->pLeft)? Temp = Temp->pLeft : Temp = Temp->pRight;
 		return *this;
 	}
 	Iterator operator ++(int)

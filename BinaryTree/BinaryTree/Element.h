@@ -3,7 +3,7 @@
 using namespace std;
 
 #define tab "\t"
-//#define DEBUG
+#define DEBUG
 
 class Element
 {
@@ -13,12 +13,13 @@ public:
 	Element(int Data, Element* pLeft = nullptr, Element* pRight = nullptr) :
 		Data(Data), pLeft(pLeft), pRight(pRight) {
 #ifdef DEBUG
-		cout << "EConstrucktor" << endl;
+		cout << "EConstrucktor  " << this << endl;
 #endif DEBUG
 	};
+
 	~Element() {
 #ifdef DEBUG
-		//cout << "EDestrucktor" << endl;
+		cout << "EDestrucktor  " << this << endl;
 #endif DEBUG
 	};
 

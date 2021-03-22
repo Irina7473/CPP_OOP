@@ -4,7 +4,8 @@ https://github.com/okovtun/VBU_022_CPP
 TODO: к 31.03.2021
 В BinaryTree добавить:
 +  CopyAssignment();
-ILconstructor;	//Tree t = {3, 5, ....};
++ ILconstructor;	//Tree t = {3, 5, ....};
++ my search
 erase(int Data);//Удаляет заданное значение из дерева
 Шаблонизировать дерево.
 
