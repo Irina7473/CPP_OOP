@@ -24,10 +24,13 @@ int main()
 	TAB;
 	Tree t3 = {11,6,33,3,15,8,5,2,9};
 	t3.print();
-	cout << t3.search(15) << endl;
-	cout<< t3.search(40)<<endl;
+	cout << "min  " << t3.minValue() << endl;
+	cout << "max  " << t3.maxValue() << endl;
+	//cout << t3.search(15) << endl;
+	//cout<< t3.search(40)<<endl;
 	TAB;
-	t3.erase(6);
+	//cout << t3.next(t3.search(6))<<endl;
+	t3.erase(3);
 	t3.print();
 	TAB;
 

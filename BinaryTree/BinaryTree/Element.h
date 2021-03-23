@@ -3,7 +3,7 @@
 using namespace std;
 
 #define tab "\t"
-#define DEBUG
+//#define DEBUG
 
 class Element
 {

@@ -9,3 +9,12 @@ TODO: к 31.03.2021
 erase(int Data);//Удаляет заданное значение из дерева
 Шаблонизировать дерево.
 
+https://t4s.tech/realizatsiya-binarnogo-dereva-poiska-v-si/
+https://habr.com/ru/post/267855/
+https://habr.com/ru/post/144850/
+
+http://ci-plus-plus-snachala.ru/?p=1249
+https://ci-plus-plus-snachala.ru/?p=89
+
+
+https://server.179.ru/tasks/cpp/total/193.html

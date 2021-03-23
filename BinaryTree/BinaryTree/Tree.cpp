@@ -49,6 +49,20 @@ void Tree::clear(Element* Root)
 	delete Root;
 }
 
+/*void Tree::erase(int data, Element* Root)
+{
+	Element* temp = Root;
+	if (Root->is_leaf() == 0) Root = nullptr;
+
+
+
+	//(temp->pLeft) ? temp = temp->pLeft : temp = temp->pRight;
+	//cout << temp << endl;
+	
+	delete temp;
+
+}*/
+
 Element* Tree::search(int data, Element* Root)
 {
 	if (Root == nullptr) return 0;
@@ -56,15 +70,6 @@ Element* Tree::search(int data, Element* Root)
 	else (data < Root->Data) ? search(data, Root->pLeft) : search(data, Root->pRight);
 }
 
-void Tree::erase(int data, Element* Root)
-{
-	Element* temp = Root;
-	cout << temp << tab << Root << endl;
-	(temp->pLeft) ? temp = temp->pLeft : temp = temp->pRight;
-	cout << temp << endl;
-	delete Root;
-
-}
 
 int Tree::count(Element* Root)
 {
@@ -90,6 +95,6 @@ void Tree::print(Element* Root)
 {
 	if (Root == nullptr) return;
 	print(Root->pLeft);
-	cout <<Root<<tab<< Root->Data << tab;
+	cout <<Root<<tab<< Root->Data << endl;
 	print(Root->pRight);
 }
