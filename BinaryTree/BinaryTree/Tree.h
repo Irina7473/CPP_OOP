@@ -35,44 +35,7 @@ public:
 		this->Root = nullptr;
 	}
 	Element* search(int data) {return search(data, this->Root);} 
-
-	/*Element* prev(Element* Root){};
-	Element* next(Element* Root)
-	{
-		//if (Root == nullptr) return 0;
-		//if (Root->pRight != nullptr) return min(Root->pRight);
-		//else return max(Root);
-	
-	};	*/
-
-	
-	void erase(int data) 
-	{
-		//Element* temp = search(data, this->Root);
-		//if (temp) erase(data, search(data, temp));
-		if (this->Root == nullptr) return;
-		Element* temper=Root;
-		Element* temppar=Root;
-		while (temper && temper->Data!=data)
-		{
-			temppar = temper;
-			(data < temper->Data) ? temper = temper->pLeft : temper = temper->pRight;
-		}
-		if (!temper) return; //не нашли элемент
-		if (temper->is_leaf()) temppar = nullptr; // у элемента нет потомков
-			else if (!temper->pLeft)	temppar = temper->pRight; // у элемента только правый потомок
-				else if (!temper->pRight) temppar = temper->pLeft; // у элемента только левый потомок
-					else if (temper->pLeft && temper->pRight) // у элемента есть оба потомка
-						{
-							temppar = temper->pRight;
-							min(temper->pRight)->pLeft = temper->pLeft;
-						}
-
-		delete temper;
-		
-
-	}
-
+	void erase(int data);
 
 	int minValue() 	{return (this->Root) ? minValue(this->Root) : 0;}
 	int maxValue() 	{return (this->Root) ? maxValue(this->Root) : 0;}
@@ -89,8 +52,8 @@ private:
 	void copy(Element* Root);
 	void insert(int Data, Element* Root);
 	void clear(Element* Root);
-	void erase(int data, Element* Root);
 	Element* search(int data, Element* Root);
+
 	Element* min(Element* Root) { return (Root->pLeft) ? min (Root->pLeft) : Root; }
 	Element* max(Element* Root) { return (Root->pRight) ? max(Root->pRight) : Root; }
 	int minValue(Element* Root) {return (Root->pLeft ) ? minValue(Root->pLeft) : Root->Data;}

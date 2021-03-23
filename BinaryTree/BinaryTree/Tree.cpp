@@ -15,6 +15,43 @@ Tree::Tree(Tree&& other) : Tree()
 	cout << "AssConstrucktor Tree  " << this << endl;
 }
 
+inline void Tree::erase(int data)
+{
+	if (this->Root == nullptr) return;
+	Element* temper = Root; //удаляемый элемент
+	Element* temppar = nullptr; // родитель удаляемого элемента
+	while (temper && temper->Data != data)
+	{
+		temppar = temper;
+		(data < temper->Data) ? temper = temper->pLeft : temper = temper->pRight;
+	}
+	if (!temper) return; //не нашли элемент
+	if (temper->is_leaf())  // у элемента нет потомков
+	{
+		if (!temppar) Root = nullptr;
+		else (temppar->pLeft == temper) ? temppar->pLeft = nullptr : temppar->pRight = nullptr;
+	}
+	else if (!temper->pLeft) // у элемента только правый потомок
+	{
+		if (!temppar) Root = temper->pRight;
+		else (temppar->pLeft == temper) ? temppar->pLeft = temper->pRight : temppar->pRight = temper->pRight;
+	}
+	else if (!temper->pRight) // у элемента только левый потомок
+	{
+		if (!temppar) Root = temper->pLeft;
+		else (temppar->pLeft == temper) ? temppar->pLeft = temper->pLeft : temppar->pRight = temper->pLeft;
+	}
+	else if (temper->pLeft && temper->pRight) // у элемента есть оба потомка
+	{
+		{
+			if (!temppar) Root = temper->pRight;
+			else (temppar->pLeft == temper) ? temppar->pLeft = temper->pRight : temppar->pRight = temper->pRight;
+			min(temper->pRight)->pLeft = temper->pLeft;
+		}
+	}
+	delete temper;
+}
+
 void Tree::copy(Element* Root)
 {
 	if (Root == nullptr) return;  //выход из пустой ветки
@@ -49,20 +86,6 @@ void Tree::clear(Element* Root)
 	delete Root;
 }
 
-/*void Tree::erase(int data, Element* Root)
-{
-	Element* temp = Root;
-	if (Root->is_leaf() == 0) Root = nullptr;
-
-
-
-	//(temp->pLeft) ? temp = temp->pLeft : temp = temp->pRight;
-	//cout << temp << endl;
-	
-	delete temp;
-
-}*/
-
 Element* Tree::search(int data, Element* Root)
 {
 	if (Root == nullptr) return 0;
@@ -70,14 +93,11 @@ Element* Tree::search(int data, Element* Root)
 	else (data < Root->Data) ? search(data, Root->pLeft) : search(data, Root->pRight);
 }
 
-
 int Tree::count(Element* Root)
 {
 	if (Root == nullptr) return 0;
 	return (Root->is_leaf()) ? 1 : count(Root->pLeft) + count(Root->pRight) + 1;
-
-	/*
-	if (Root == nullptr)return 0;
+	/*if (Root == nullptr)return 0;
 	static int s = 0;
 	size(Root->pLeft);
 	s++;
