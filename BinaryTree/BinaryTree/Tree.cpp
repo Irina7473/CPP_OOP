@@ -15,33 +15,33 @@ Tree::Tree(Tree&& other) : Tree()
 	cout << "AssConstrucktor Tree  " << this << endl;
 }
 
-inline void Tree::erase(int data)
+void Tree::erase(int data)
 {
 	if (this->Root == nullptr) return;
-	Element* temper = Root; //óäàëÿåìûé ýëåìåíò
-	Element* temppar = nullptr; // ðîäèòåëü óäàëÿåìîãî ýëåìåíòà
+	Element* temper = Root; //Ã³Ã¤Ã Ã«Ã¿Ã¥Ã¬Ã»Ã© Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²
+	Element* temppar = nullptr; // Ã°Ã®Ã¤Ã¨Ã²Ã¥Ã«Ã¼ Ã³Ã¤Ã Ã«Ã¿Ã¥Ã¬Ã®Ã£Ã® Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã 
 	while (temper && temper->Data != data)
 	{
 		temppar = temper;
 		(data < temper->Data) ? temper = temper->pLeft : temper = temper->pRight;
 	}
-	if (!temper) return; //íå íàøëè ýëåìåíò
-	if (temper->is_leaf())  // ó ýëåìåíòà íåò ïîòîìêîâ
+	if (!temper) return; //Ã­Ã¥ Ã­Ã Ã¸Ã«Ã¨ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²
+	if (temper->is_leaf())  // Ã³ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã  Ã­Ã¥Ã² Ã¯Ã®Ã²Ã®Ã¬ÃªÃ®Ã¢
 	{
 		if (!temppar) Root = nullptr;
 		else (temppar->pLeft == temper) ? temppar->pLeft = nullptr : temppar->pRight = nullptr;
 	}
-	else if (!temper->pLeft) // ó ýëåìåíòà òîëüêî ïðàâûé ïîòîìîê
+	else if (!temper->pLeft) // Ã³ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã  Ã²Ã®Ã«Ã¼ÃªÃ® Ã¯Ã°Ã Ã¢Ã»Ã© Ã¯Ã®Ã²Ã®Ã¬Ã®Ãª
 	{
 		if (!temppar) Root = temper->pRight;
 		else (temppar->pLeft == temper) ? temppar->pLeft = temper->pRight : temppar->pRight = temper->pRight;
 	}
-	else if (!temper->pRight) // ó ýëåìåíòà òîëüêî ëåâûé ïîòîìîê
+	else if (!temper->pRight) // Ã³ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã  Ã²Ã®Ã«Ã¼ÃªÃ® Ã«Ã¥Ã¢Ã»Ã© Ã¯Ã®Ã²Ã®Ã¬Ã®Ãª
 	{
 		if (!temppar) Root = temper->pLeft;
 		else (temppar->pLeft == temper) ? temppar->pLeft = temper->pLeft : temppar->pRight = temper->pLeft;
 	}
-	else if (temper->pLeft && temper->pRight) // ó ýëåìåíòà åñòü îáà ïîòîìêà
+	else if (temper->pLeft && temper->pRight) // Ã³ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã  Ã¥Ã±Ã²Ã¼ Ã®Ã¡Ã  Ã¯Ã®Ã²Ã®Ã¬ÃªÃ 
 	{
 		{
 			if (!temppar) Root = temper->pRight;
@@ -54,7 +54,7 @@ inline void Tree::erase(int data)
 
 void Tree::copy(Element* Root)
 {
-	if (Root == nullptr) return;  //âûõîä èç ïóñòîé âåòêè
+	if (Root == nullptr) return;  //Ã¢Ã»ÃµÃ®Ã¤ Ã¨Ã§ Ã¯Ã³Ã±Ã²Ã®Ã© Ã¢Ã¥Ã²ÃªÃ¨
 	insert(Root->Data, this->Root);
 	copy(Root->pLeft);
 	copy(Root->pRight);
