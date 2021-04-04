@@ -1,0 +1,20 @@
+﻿https://www.youtube.com/watch?v=keX4ivr9Ytc&list=PLeqyOOqxeiINBBW5KUmcf-M4_wfb4yqKp&index=1&t=205s
+https://github.com/okovtun/VBU_022_CPP
+
+TODO: к 31.03.2021
+В BinaryTree добавить:
++  CopyAssignment();
++ ILconstructor;	//Tree t = {3, 5, ....};
++ my search
+erase(int Data);//Удаляет заданное значение из дерева
+Шаблонизировать дерево.
+
+https://t4s.tech/realizatsiya-binarnogo-dereva-poiska-v-si/
+https://habr.com/ru/post/267855/
+https://habr.com/ru/post/144850/
+
+http://ci-plus-plus-snachala.ru/?p=1249
+https://ci-plus-plus-snachala.ru/?p=89
+
+
+https://server.179.ru/tasks/cpp/total/193.html
