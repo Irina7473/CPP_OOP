@@ -29,22 +29,20 @@ int main()
 #ifdef BASA
     DBviolators DB;
     DB.insert(568269, 20190610, "Samara", 911);
-    cout << sec << endl;
+    cout << sec;
     DB.insert(325784, 20200618, "Perm", 916);
-    cout << sec << endl;
+    cout << sec;
     DB.insert(754784, 20180512, "Orel", 921);
-    cout << sec << endl;
+    cout << sec;
     DB.insert(568269, 20200425, "Samara", 923);
-    cout << sec << endl;
+    cout << sec;
     DB.insert(754784, 20180512, "Orel", 945);
     cout << sec << endl;
+    DB.print();
+    cout << sec;
+   // DB.print(754784);
 
 #endif BASA
-
-   
-  //  DB.print();
-  
-
 
     
 
