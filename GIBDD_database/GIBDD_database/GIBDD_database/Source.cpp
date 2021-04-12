@@ -1,8 +1,4 @@
-//#include<iostream>
-//#include<cstring>
-//#include<cstdlib>
 #include "DBviolators.h"
-
 #define BASA
 //#define CAR
 
