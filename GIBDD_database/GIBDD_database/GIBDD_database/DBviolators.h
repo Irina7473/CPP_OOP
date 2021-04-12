@@ -14,9 +14,7 @@ public:
 	};
 	
 	void insert(int namberCar, int data, string location, int article)
-	{ insert(namberCar, data, location, article, this->Root);
-	cout << "DB ins" << endl;
-	}
+	{ insert(namberCar, data, location, article, this->Root);}
 
 	CarViolator* search(int namberCar) { return search(namberCar, this->Root); }
 
@@ -25,12 +23,12 @@ public:
 		print(this->Root);
 		cout << endl;
 	}
-	/*
+	
 	void print(int namberCar)
 	{
-		print(this->Root);
+		print(this->Root, namberCar);
 		cout << endl;
-	}*/
+	}
 	
 private:
 	void insert(int namberCar, int data, string location, int article, CarViolator* Root)
@@ -55,7 +53,7 @@ private:
 				}
 				else insert(namberCar, data, location, article, Root->pLeft);
 			}
-			else //if (namberCar > Root->NamberCar)
+			else 
 			{
 				if (Root->pRight) insert(namberCar, data, location, article, Root->pRight);
 				else
@@ -82,13 +80,25 @@ private:
 		delete Root;
 	}
 
-	void print(CarViolator* Root)
+	void print(CarViolator* Root, int namberCar = 0)
 	{
 		if (!Root) return;
-		print(Root->pLeft);
-		cout << Root->List<<tab<<Root->NamberCar << tab << Root->List->Size << endl;
-		//cout<< Root->List->print() << endl;
-		print(Root->pRight);
+		if (!namberCar)
+		{
+			print(Root->pLeft);
+			cout << "By car - " << Root->NamberCar << "  total violations - " <<Root->List->Size << endl;
+			print(Root->pRight);
+		}
+		else
+		{
+			if (search(namberCar, Root))
+			{
+				cout << "By car - " << namberCar << tab;
+				search(namberCar, Root)->List->print();
+			}
+			else cout << "No violations were found for the car - " << namberCar << endl;
+		}
+
 	}
 	
 

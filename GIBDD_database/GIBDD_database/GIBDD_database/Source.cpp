@@ -3,7 +3,6 @@
 #include<cstdlib>
 #include "DBviolators.h"
 
-#define sec "----------------------------------------- \n"
 #define BASA
 //#define CAR
 
@@ -37,15 +36,20 @@ int main()
     DB.insert(568269, 20200425, "Samara", 923);
     cout << sec;
     DB.insert(754784, 20180512, "Orel", 945);
+    DB.insert(754784, 20190622, "Orel", 945);
+
     cout << sec << endl;
     DB.print();
     cout << sec;
-   // DB.print(754784);
+    DB.print(754784);
+    cout << sec;
+    //DB.print(754784);
+    //cout << sec << endl;
 
 #endif BASA
 
     
-
+    return 0;
 }
 
 

@@ -2,6 +2,8 @@
 #include<iostream>
 #include<cstring>
 #define tab "    "
+#define sec "----------------------------------------- \n"
+
 
 using namespace std;
 //Конкретное нарушение автомобиля
@@ -23,24 +25,8 @@ public:
 	{
 		cout << this<<tab<< article << endl;
 	};
-	~Violation() {};
-
-	/*
-	Violation(const Violation& other) :
-		Data(other.Data), Location(other.Location), Article(other.Article), pPrev(other.pPrev), pNext(other.pNext) {};
-	Violation& operator=(const Violation& other)
-	{
-		if (this != &other)
-		{
-			Data = other.Data;
-			Location = other.Location;
-			Article = other.Article;
-			pPrev = other.pPrev;
-			pNext = other.pNext;
-		}
-		return *this;
-	}*/
-
+	~Violation() { cout << "Viol de" << endl; };
+	
 	friend class ListViolationsCar;
 };
 
