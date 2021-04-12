@@ -13,14 +13,11 @@ public:
         NamberCar(namberCar), pLeft(pLeft), pRight(pRight) 
     {
         List = new ListViolationsCar;
-        cout << "CVcon" << endl;
-        cout << List << endl;
+        cout << this <<tab<< namberCar << endl;
     };
     
-    ~CarViolator() {};
+    ~CarViolator() { cout << "CV de" << endl; };
 
     bool is_leaf() { return pLeft == pRight; }
     friend class DBviolators;
 };
-
-//new ListViolationsCar(new Violation(int data, string location, int article))

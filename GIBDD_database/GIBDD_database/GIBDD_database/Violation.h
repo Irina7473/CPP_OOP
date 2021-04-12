@@ -19,12 +19,15 @@ public:
 	Violation* getpPrev() { return pPrev; }
 
 	Violation(int data, string location, int article, Violation* pPrev = nullptr, Violation* pNext = nullptr) :
-		Data(data), Location(location), Article(article), pPrev (pPrev), pNext(pNext) {
-		cout << "Vcon" << endl;
+		Data(data), Location(location), Article(article), pPrev (pPrev), pNext(pNext)
+	{
+		cout << this<<tab<< article << endl;
 	};
+	~Violation() {};
+
+	/*
 	Violation(const Violation& other) :
 		Data(other.Data), Location(other.Location), Article(other.Article), pPrev(other.pPrev), pNext(other.pNext) {};
-	~Violation() {};
 	Violation& operator=(const Violation& other)
 	{
 		if (this != &other)
@@ -36,7 +39,8 @@ public:
 			pNext = other.pNext;
 		}
 		return *this;
-	}
+	}*/
+
 	friend class ListViolationsCar;
 };
 

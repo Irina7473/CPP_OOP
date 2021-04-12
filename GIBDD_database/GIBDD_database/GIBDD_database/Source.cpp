@@ -3,29 +3,47 @@
 #include<cstdlib>
 #include "DBviolators.h"
 
+#define sec "----------------------------------------- \n"
+#define BASA
+//#define CAR
+
+
 using namespace std;
 
 int main()
 {
    // setlocale(LC_ALL, "Russian");
   
+#ifdef CAR
     ListViolationsCar Car1;
     Car1.push_front(20180512, "Orel", 911);
     Car1.push_front(20180602, "Perm", 918);
-    Car1.print();  
+    Car1.print();
     //cout << Car1 << endl; error
-    cout << "/////////////" << endl;
+    cout << sec << endl;
 
+#endif CAR
+
+   
+
+#ifdef BASA
     DBviolators DB;
     DB.insert(568269, 20190610, "Samara", 911);
-    cout << "------------------" << endl;
-    DB.insert(125784, 20200618, "Perm", 923);
-    cout << "------------------" << endl;
-    DB.insert(744784, 20180512, "Orel", 911);
-    cout << "/////////////" << endl;
+    cout << sec << endl;
+    DB.insert(325784, 20200618, "Perm", 916);
+    cout << sec << endl;
+    DB.insert(754784, 20180512, "Orel", 921);
+    cout << sec << endl;
+    DB.insert(568269, 20200425, "Samara", 923);
+    cout << sec << endl;
+    DB.insert(754784, 20180512, "Orel", 945);
+    cout << sec << endl;
 
-    DB.print();
-  //  cout << DB << endl;
+#endif BASA
+
+   
+  //  DB.print();
+  
 
 
     
@@ -83,10 +101,6 @@ void PrintList(ListViolations* Head)
         curr = curr->next;
     }
 }
-
-////////////////
-
-
 
 ///////////////////////////
 
@@ -148,36 +162,7 @@ void database::DeleteAll(TreeNode* temp)
 }
 
 
-//метод добавления 
-void database::Add(TreeNode*& head, TreeNode* parent, int value, char* str)
-{
-    TreeNode* temp = new TreeNode;
-    temp->number = value;
-    temp->list = NULL;
-    temp->left = temp->right = temp->parent = NULL;
 
-    if (!head)
-    {
-        head = temp;
-        Push(head->list, str);
-    }
-    else
-    {
-        if (value < head->number)
-            Add(head->left, head, value, str);
-
-        else if (value > head->number)
-            Add(head->left, head, value, str);
-        else
-            Push(head->list, str);
-    }
-}
-
-
-void database::Add(int value, char* str)
-{
-    Add(root, NULL, value, str);
-}
 
 //метод печати полной базы данных
 void database::PrintAll(TreeNode* temp)
@@ -192,25 +177,5 @@ void database::PrintAll(TreeNode* temp)
     }
 }
 
-
-int main(int argc, char* argv[])
-{
-    setlocale(LC_ALL, "Russian");
-
-
-    database bd;
-
-
-    bd.Add(9999, "Нарушение А");
-    bd.Add(9999, "Нарушение В");
-    bd.Add(9999, "Нарушение С");
-    bd.Add(2099, "Нарушение А");
-    bd.Add(1000, "Нарушение С");
-    bd.Add(9333, "Нарушение С");
-    bd.Add(9055, "Нарушение А");
-    bd.Add(9055, "Нарушение В");
-
-
-    bd.PrintAll(bd.ReturnRoot());
 
 }*/

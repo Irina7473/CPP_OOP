@@ -8,8 +8,9 @@ class ListViolationsCar
 	int Size;
 public:
 	Violation* getHead() { return Head; }
-	ListViolationsCar():Head(nullptr), Tail(nullptr), Size(0){ cout << "LVCcon" << endl; };
-	~ListViolationsCar() { while (Tail) pop_back(); };
+	ListViolationsCar():Head(nullptr), Tail(nullptr), Size(0){ cout << "LVC con "<<this << endl; };
+	~ListViolationsCar() 
+	{ while (Tail) pop_back(); cout << "LVC de" << endl;};
 
 	void push_front(/*ListViolationsCar& list,*/ int data, string location, int article)
 	{
@@ -17,11 +18,9 @@ public:
 			Head = Tail = new Violation(data, location, article);
 		else Head = Head->pPrev = new Violation(data, location, article, nullptr, Head);
 		Size++;
-		cout << "Size " <<Size<< endl;
+		cout <<this<<tab<< "Size " <<Size<<tab<<article<< endl;
 	}
 
-
-	
 	void pop_back()
 	{
 		if (Tail)
@@ -58,6 +57,7 @@ public:
 			<< "Article - " << Temp->getArticle() << endl << "Total violations by car - " << list.Size << endl;
 		return os;
 	}*/
+
 	friend class DBviolators;
 };
 

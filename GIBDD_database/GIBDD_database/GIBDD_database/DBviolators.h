@@ -6,20 +6,20 @@ class DBviolators
 {
 	CarViolator* Root;
 public:
-	DBviolators() :Root(nullptr) { cout << "DBcon" << endl; };
-	~DBviolators() { cout << "DBde" << endl; };
+	DBviolators() :Root(nullptr) { cout << "DB con" << endl; };
+	~DBviolators()
+	{
+		clear(this->Root);
+		cout << "DB de" << endl;
+	};
 	
 	void insert(int namberCar, int data, string location, int article)
 	{ insert(namberCar, data, location, article, this->Root);
-	cout << "DBins" << endl;
+	cout << "DB ins" << endl;
 	}
 
-	/*
-	void clear()
-	{
-		clear(this->Root);
-		this->Root = nullptr;
-	}*/
+	CarViolator* search(int namberCar) { return search(namberCar, this->Root); }
+
 	void print()
 	{
 		print(this->Root);
@@ -33,45 +33,54 @@ public:
 	}*/
 	
 private:
-	void insert(int namberCar, int data, string location, int article, CarViolator*& root)
+	void insert(int namberCar, int data, string location, int article, CarViolator* Root)
 	{
-		//if (!root) return;
-		if (!this->Root) 
+		CarViolator* existCar = search(namberCar, Root);
+		if (existCar) existCar->List->push_front(data, location, article);
+		else
 		{
-			cout << "ins Root" << endl;
-			this->Root = new CarViolator(namberCar);
-			Root->List->push_front(data, location,article);
-		}
-		//if (namberCar = Root->NamberCar) return;
-		//else 
-			if (namberCar < Root->NamberCar)
-		{
-			if (!Root->pLeft)
+			if (!this->Root)
 			{
-				Root->pLeft = new CarViolator(namberCar);
-				Root->List->push_front(data, location, article);
+				cout << "ins Root" << endl;
+				this->Root = new CarViolator(namberCar);
+				this->Root->List->push_front(data, location, article);
 			}
-			else
-				insert(namberCar,data,location,article,Root->pLeft);
-		}
-		else if (namberCar > Root->NamberCar)
-		{
-			if (Root->pRight) insert(namberCar, data, location, article, Root->pRight);
-			else 
+			if (!Root) return;
+			if (namberCar < Root->NamberCar)
 			{
-				Root->pRight = new CarViolator(namberCar);
-				Root->List->push_front(data, location, article);
+				if (!Root->pLeft)
+				{
+					Root->pLeft = new CarViolator(namberCar);
+					Root->pLeft->List->push_front(data, location, article);
+				}
+				else insert(namberCar, data, location, article, Root->pLeft);
+			}
+			else //if (namberCar > Root->NamberCar)
+			{
+				if (Root->pRight) insert(namberCar, data, location, article, Root->pRight);
+				else
+				{
+					Root->pRight = new CarViolator(namberCar);
+					Root->pRight->List->push_front(data, location, article);
+				}
 			}
 		}
 	}
-	/*
+
+	CarViolator* search(int namberCar, CarViolator* Root)
+	{
+		if (!Root) return nullptr;
+		if (Root->NamberCar == namberCar) return Root;
+		else (namberCar < Root->NamberCar) ? search(namberCar, Root->pLeft) : search(namberCar, Root->pRight);
+	}
+		
 	void clear(CarViolator* Root)
 	{
 		if (Root == nullptr) return;
 		clear(Root->pLeft);
 		clear(Root->pRight);
 		delete Root;
-	}*/
+	}
 
 	void print(CarViolator* Root)
 	{
