@@ -15,17 +15,15 @@ class Violation
 	Violation* pPrev;
 	Violation* pNext;
 public:
-	int getData() { return Data; }
-	string getLocation() { return Location; }
-	int getArticle() { return Article; }
-	Violation* getpPrev() { return pPrev; }
+	//int getData() { return Data; }
+	//string getLocation() { return Location; }
+	//int getArticle() { return Article; }
+	//Violation* getpPrev() { return pPrev; }
+	//Violation* getpNext() { return pNext; }
 
 	Violation(int data, string location, int article, Violation* pPrev = nullptr, Violation* pNext = nullptr) :
-		Data(data), Location(location), Article(article), pPrev (pPrev), pNext(pNext)
-	{
-		cout << this<<tab<< article << endl;
-	};
-	~Violation() { cout << "Viol de" << endl; };
+		Data(data), Location(location), Article(article), pPrev (pPrev), pNext(pNext) {};
+	~Violation() {};
 	
 	friend class ListViolationsCar;
 };

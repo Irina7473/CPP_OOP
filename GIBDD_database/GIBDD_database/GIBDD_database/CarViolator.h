@@ -11,13 +11,10 @@ public:
 
     CarViolator(int namberCar, CarViolator* pleft=nullptr, CarViolator* pright=nullptr) :
         NamberCar(namberCar), pLeft(pLeft), pRight(pRight) 
-    {
-        List = new ListViolationsCar;
-        cout << this <<tab<< namberCar << endl;
-    };
+    { List = new ListViolationsCar; };
     
-    ~CarViolator() { cout << "CV de" << endl; };
-
+    ~CarViolator() {};
+        
     bool is_leaf() { return pLeft == pRight; }
     friend class DBviolators;
 };

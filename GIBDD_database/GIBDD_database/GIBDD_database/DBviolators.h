@@ -1,32 +1,47 @@
 #pragma once
-#include "CarViolator.h"
+#include "ListViolationsCar.h"
 
 //база данных автомобилей-нарушителей ПДД
 class DBviolators
 {
-	CarViolator* Root;
-public:
-	DBviolators() :Root(nullptr) { cout << "DB con" << endl; };
-	~DBviolators()
+	//автомобиль со списком своих нарушений
+	class CarViolator
 	{
-		clear(this->Root);
-		cout << "DB de" << endl;
-	};
+		int NamberCar;
+		ListViolationsCar* List;
+		CarViolator* pLeft;
+		CarViolator* pRight;
+	public:
+
+		CarViolator(int namberCar, CarViolator* pleft = nullptr, CarViolator* pright = nullptr) :
+			NamberCar(namberCar), pLeft(pLeft), pRight(pRight)
+		{
+			List = new ListViolationsCar;
+		};
+
+		~CarViolator() {};
+
+		bool is_leaf() { return pLeft == pRight; }
+		friend class DBviolators;
+	}* Root;
+
+public:
+	DBviolators() :Root(nullptr) {};
+	~DBviolators()	{clear(this->Root);}
 	
 	void insert(int namberCar, int data, string location, int article)
 	{ insert(namberCar, data, location, article, this->Root);}
 
 	CarViolator* search(int namberCar) { return search(namberCar, this->Root); }
 
-	void print()
-	{
-		print(this->Root);
-		cout << endl;
-	}
+	void print() { print(this->Root); }
 	
-	void print(int namberCar)
-	{
-		print(this->Root, namberCar);
+	void print(int namberCar) {	print(this->Root, namberCar); }
+
+	void printViol(int article)	
+	{ 
+		cout << "Violation - " << article << " found in cars : " << endl;
+		printViol(this->Root, article);
 		cout << endl;
 	}
 	
@@ -38,8 +53,7 @@ private:
 		else
 		{
 			if (!this->Root)
-			{
-				cout << "ins Root" << endl;
+			{				
 				this->Root = new CarViolator(namberCar);
 				this->Root->List->push_front(data, location, article);
 			}
@@ -94,14 +108,20 @@ private:
 			if (search(namberCar, Root))
 			{
 				cout << "By car - " << namberCar << tab;
-				search(namberCar, Root)->List->print();
+				search(namberCar, Root)->List->printList();
 			}
 			else cout << "No violations were found for the car - " << namberCar << endl;
 		}
 
 	}
 	
-
+	void printViol(CarViolator* Root, int article)
+	{ 
+		if (!Root) return;
+		printViol(Root->pLeft, article);
+		if(Root->List->findViol(article)) cout << Root->NamberCar << tab;
+		printViol(Root->pRight, article);
+	}
 	
 };
 

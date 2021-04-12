@@ -1,5 +1,26 @@
 ﻿#pragma once
-#include "Violation.h"
+#include<iostream>
+#include<cstring>
+#define tab "    "
+#define sec "----------------------------------------- \n"
+
+using namespace std;
+
+//Конкретное нарушение автомобиля
+class Violation
+{
+	int Data;  //дата нарушения
+	string Location;  //место нарушения
+	int Article;  //статья КоАП
+	Violation* pPrev;
+	Violation* pNext;
+public:
+	Violation(int data, string location, int article, Violation* pPrev = nullptr, Violation* pNext = nullptr) :
+		Data(data), Location(location), Article(article), pPrev(pPrev), pNext(pNext) {};
+	~Violation() {};
+	friend class ListViolationsCar;
+};
+
 //Лист нарушений конкретного автомобиля
 class ListViolationsCar
 {
@@ -7,11 +28,8 @@ class ListViolationsCar
 	Violation* Tail;
 	int Size;
 public:
-	Violation* getHead() { return Head; }
-	ListViolationsCar():Head(nullptr), Tail(nullptr), Size(0)
-	{ cout << "LVC con "<<this << endl; };
-	~ListViolationsCar() 
-	{ while (Tail) pop_back(); cout << "LVC de" << endl;};
+	ListViolationsCar():Head(nullptr), Tail(nullptr), Size(0) {};
+	~ListViolationsCar() { while (Tail) pop_back(); };
 
 	void push_front(int data, string location, int article)
 	{
@@ -22,7 +40,15 @@ public:
 	}
 	
 	bool empty() const {return Head == nullptr && Tail == nullptr;}
-	void print()const
+
+	bool findViol(int article)
+	{
+		for (Violation* Temp = Head; Temp != nullptr; Temp=Temp->pNext)
+			if (Temp->Article== article) return true;
+		return false;
+	}
+
+	void printList()const
 	{
 		cout << "Total violations - " << Size << endl;
 		cout << "|    Data    |" << "  Location  |" << "  Article  |" << endl;
@@ -30,6 +56,7 @@ public:
 		for (Violation* Temp = Head; Temp != nullptr; Temp = Temp->pNext)
 			cout << tab << Temp->Data << tab<< Temp->Location << tab << tab << Temp->Article << endl;
 	}
+
 private:
 	void pop_back()
 	{
